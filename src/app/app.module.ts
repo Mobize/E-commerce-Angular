@@ -12,6 +12,23 @@ import { ShopComponent } from './shop/shop.component';
 import { ProductsComponent } from './shop/products/products.component';
 import { SingleProductComponent } from './shop/single-product/single-product.component';
 import { CartComponent } from './shop/cart/cart.component';
+import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
+
+const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'shop', component: ShopComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'single-product.:id', component: SingleProductComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'notFound', component: NotFoundComponent },
+  { path: '', component: ShopComponent },
+  { path: '**', pathMatch:'full', redirectTo: 'notFound' }
+];
+
+export const appRouting = RouterModule.forRoot(routes);
 
 @NgModule({
   declarations: [
@@ -25,10 +42,12 @@ import { CartComponent } from './shop/cart/cart.component';
     ShopComponent,
     ProductsComponent,
     SingleProductComponent,
-    CartComponent
+    CartComponent,
+    NotFoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
