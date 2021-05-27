@@ -1,4 +1,8 @@
+import { Products } from './../../model/products';
+import { CartService } from './../../services/cart.service';
 import { Component, OnInit } from '@angular/core';
+import { Cart } from 'src/app/model/cart';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  cart: Cart[] = [];
+  prefUrlImage = `${environment.prefixUrlImage}`;
+  cartData;
+
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.cart = this.cartService.cart;
+    this.cartData = this.cartService.cartData;
+  }
+
+  addProduct(product: Products): void {
+    this.cartService.addProductToCart(product);
+  }
+
+  deleteProduct(product: Products): void {
+    // console.log(product)
+    this.cartService.deleteFromCart(product);
   }
 
 }

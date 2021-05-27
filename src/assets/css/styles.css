@@ -5256,7 +5256,7 @@ img.second-img {
 .modal.style3 .modal-header .close {
     opacity: 1;
     position: absolute;
-    top: 25px;
+    top: 6px;
     right: 30px;
     padding: 0;
     z-index: 999;
@@ -5266,6 +5266,7 @@ img.second-img {
     line-height: 1;
     text-shadow: 0 1px 0 #ffffff;
     font-family: "Gilroy-Bold ☞";
+    font-size: 35px;
 }
 
 .modal.style3 .modal-header .close:hover {
