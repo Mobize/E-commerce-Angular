@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckoutComponent } from './shop/checkout/checkout.component';
 import { ButtonPaypalComponent } from './shop/button-paypal/button-paypal.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -69,7 +70,9 @@ export const appRouting = RouterModule.forRoot(routes);
     ReactiveFormsModule,
     NgxPayPalModule
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
